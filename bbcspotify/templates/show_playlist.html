@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block body %}
+<script>
+function drag(ev) {
+  ev.dataTransfer.setData("Text",ev.target.id);
+}
+</script>
+<div class="header">
+    <ul class="nav nav-pills pull-right">
+      <li class="active"><a href="/">Home</a></li>
+      <li><a href="/about">About</a></li>
+    </ul>
+    <h3 class="text-muted">BBC Radio to Spotify</h3>
+</div>
+<div class="jumbotron">
+    <h1>Here's your playlist</h1>
+    <h2>{{ title }}</h2>
+    <div draggable="true" ondragstart="drag(event)" class="btn btn-lg btn-success" href="#" role="button" id="{% if playlist %}{{ playlist }}{% endif %}">{% if playlist %}Drag me into Spotify{% else %}No results found :({% endif %}</div>
+{% endblock %}
